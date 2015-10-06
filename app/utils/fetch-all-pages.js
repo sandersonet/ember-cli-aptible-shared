@@ -26,7 +26,6 @@ export default function fetchAllPages(store, owner, modelName) {
         };
 
         query[owner.constructor.modelName] = owner;
-
         promises.push( store.find(modelName, query) );
       }
 
