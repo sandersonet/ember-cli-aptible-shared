@@ -601,8 +601,10 @@ Ember.Test.registerHelper('stubUser', function(app, userData={}){
 
 Ember.Test.registerAsyncHelper('triggerSlider', function(app, selector, argument){
   let slider = findWithAssert(selector);
-  slider.trigger('slide', argument);
-  slider.trigger('set', argument);
+  Ember.run.later(() => {
+    slider.trigger('slide', argument);
+    slider.trigger('set', argument);
+  });
 });
 
 Ember.Test.registerHelper('stubInvitation', function(app, invitationData={}){
